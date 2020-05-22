@@ -6,16 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public final class BookController {
+public final class GetBookListController {
     private final BookRepository bookRepository;
 
-    public BookController(BookRepository bookRepository) {
+    public GetBookListController(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
     @GetMapping("/books")
     public String getBooks(Model model) {
         model.addAttribute("books", this.bookRepository.findAll());
-        return "books";
+        return "books/list";
     }
 }
