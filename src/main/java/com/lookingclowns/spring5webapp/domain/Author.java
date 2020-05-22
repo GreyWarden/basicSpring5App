@@ -1,9 +1,6 @@
 package com.lookingclowns.spring5webapp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -13,6 +10,7 @@ public final class Author {
     private Long id;
     private String firstName;
     private String lastName;
+    @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
 
     public Author(){}
