@@ -1,6 +1,7 @@
 package com.lookingclowns.spring5webapp.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -16,10 +17,10 @@ public final class Author {
 
     public Author(){}
 
-    public Author(String firstName, String lastName, Set<Book> books) {
+    public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.books = books;
+        this.books = new HashSet<>();
     }
 
     public Long getId() {
@@ -52,6 +53,10 @@ public final class Author {
 
     public void setBooks(Set<Book> books) {
         this.books = books;
+    }
+
+    public void addBook(Book book) {
+        this.books.add(book);
     }
 
     @Override
