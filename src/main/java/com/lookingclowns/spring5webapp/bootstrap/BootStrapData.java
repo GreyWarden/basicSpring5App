@@ -49,9 +49,21 @@ public final class BootStrapData implements CommandLineRunner {
         bookRepository.save(deseos);
         publisherRepository.save(publisher);
 
+        publisher.addBook(poemarioFlores);
+        publisher.addBook(deseos);
+        poemarioFlores.setPublisher(publisher);
+        deseos.setPublisher(publisher);
+
+        authorRepository.save(lau);
+        bookRepository.save(poemarioFlores);
+        authorRepository.save(lou);
+        bookRepository.save(deseos);
+        publisherRepository.save(publisher);
+
         System.out.println("Bootstrapping data");
         System.out.println("Number of Authors: " + authorRepository.count());
         System.out.println("Number of Books: " + bookRepository.count());
         System.out.println("Number of Publishers: " + publisherRepository.count());
+        System.out.println("Published books: " + publisher.getBooks().size());
     }
 }
